@@ -1,19 +1,30 @@
 package com.example.xox_game.components
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.xox_game.ui.theme.Padding16
-import com.example.xox_game.ui.theme.ProgressIndicatorColor
+import com.example.xox_game.ui.theme.*
 
 
-@Preview
 @Composable
-fun MProgressIndicator() {
-    LinearProgressIndicator(
+fun MProgressIndicator(enabled: Boolean) {
+    val progressValue = 0f
+    CircularProgressIndicator(
         color = ProgressIndicatorColor,
-        modifier = Modifier.padding(Padding16)
+        modifier = Modifier
+            .padding(Padding16)
+            .size(Size112),
+        progress = if(enabled) {
+            val infiniteTransition = rememberInfiniteTransition()
+            val progressAnimationValue by infiniteTransition.animateFloat(
+                initialValue = 1f,
+                targetValue = progressValue,
+                animationSpec = infiniteRepeatable(animation = tween(10000))
+            )
+            progressAnimationValue
+        } else 1f
     )
 }

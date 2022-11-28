@@ -12,9 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import com.example.xox_game.domain.game.GameChar
-import com.example.xox_game.domain.game.GameCharType
-import com.example.xox_game.domain.game.Level
+import com.example.xox_game.models.game.GameChar
+import com.example.xox_game.models.game.GameCharType
+import com.example.xox_game.models.game.Level
 import com.example.xox_game.ui.theme.*
 import com.example.xox_game.utils.GameUtils
 
@@ -24,7 +24,6 @@ fun MGameBoard() {
     val selectedGameChar = GameChar(GameCharType.X)
     val level = Level.LEVEL_1
     val list = GameUtils.createEmptyListBySize(level.count)
-
     LazyVerticalGrid(
         columns = GridCells.Fixed(level.count),
         verticalArrangement = Arrangement.Center
@@ -34,7 +33,6 @@ fun MGameBoard() {
                 backgroundColor = CellBackgroundColor,
                 modifier = Modifier
                     .padding(Padding4)
-
                     .fillMaxWidth()
                     .clickable {
                         list[index] = selectedGameChar

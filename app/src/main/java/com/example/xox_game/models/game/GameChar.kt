@@ -1,4 +1,4 @@
-package com.example.xox_game.domain.game
+package com.example.xox_game.models.game
 
 data class GameChar(
     val type: GameCharType,

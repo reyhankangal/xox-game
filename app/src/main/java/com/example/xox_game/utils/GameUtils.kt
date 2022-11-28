@@ -2,8 +2,8 @@ package com.example.xox_game.utils
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import com.example.xox_game.domain.game.GameChar
-import com.example.xox_game.domain.game.GameCharType
+import com.example.xox_game.models.game.GameChar
+import com.example.xox_game.models.game.GameCharType
 
 object GameUtils {
 
