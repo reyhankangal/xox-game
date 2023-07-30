@@ -7,14 +7,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.xox_game.components.MGameBoard
 import com.example.xox_game.components.MGameTimer
+import com.example.xox_game.models.game.GameBoardCell
+import com.example.xox_game.models.game.GameCharType
+import com.example.xox_game.ui.main.MainViewModel
 import com.example.xox_game.ui.theme.*
 
 
-@Preview
 @Composable
-fun GameBoardScreen() {
+fun GameBoardScreen(onClickCell: (position: Int, charType: GameCharType) -> Unit, size: Int,gameBoardCells: List<GameBoardCell>) {
     var progressEnabled by remember { mutableStateOf(false) }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -33,7 +36,7 @@ fun GameBoardScreen() {
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
-            MGameBoard()
+            MGameBoard(onClickCell, size, gameBoardCells)
         }
     }
 }
