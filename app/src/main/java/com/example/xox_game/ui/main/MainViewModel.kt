@@ -26,4 +26,13 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun resetCells() {
+        gameBoardStateList.forEach { cell ->
+            cell.apply {
+                gameCharType = null
+                isSelected = false
+            }
+        }
+    }
+
 }

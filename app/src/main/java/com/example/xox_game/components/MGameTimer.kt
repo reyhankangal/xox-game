@@ -7,26 +7,24 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.xox_game.models.game.GameCharType
-import com.example.xox_game.ui.theme.FontSize30
-import com.example.xox_game.ui.theme.Padding8
-import com.example.xox_game.ui.theme.TextColorBlack
+import com.example.xox_game.ui.theme.*
 
-@Composable
-fun MGameTimer(progressEnabled: Boolean) {
+@Composable()
+fun MGameTimer(isCurrentCharType: GameCharType, onFinished: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = GameCharType.X.text,
-            color = TextColorBlack,
-            fontSize = FontSize30,
+            color = if (isCurrentCharType == GameCharType.X) TextColorBlack else TextColorPassive,
+            fontSize = if (isCurrentCharType == GameCharType.X) FontSize50 else FontSize30,
             modifier = Modifier.padding(Padding8)
         )
-        MProgressIndicator(progressEnabled)
+        MProgressIndicator(isCurrentCharType, onFinished)
         Text(
             text = GameCharType.O.text,
-            color = TextColorBlack,
-            fontSize = FontSize30,
+            color = if (isCurrentCharType == GameCharType.O) TextColorBlack else TextColorPassive,
+            fontSize = if (isCurrentCharType == GameCharType.O) FontSize50 else FontSize30,
             modifier = Modifier.padding(Padding8)
         )
     }
